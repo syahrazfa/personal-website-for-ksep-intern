@@ -1,0 +1,266 @@
+/* =========================
+   DESIGN TOKENS
+========================= */
+:root {
+  --bg: #0B0F14;
+  --bg-layer: #0E3B2E;
+  --surface: #0F1720;
+  --border: #1A2A25;
+
+  --accent: #10C58B;
+  --accent-muted: #1F7A5A;
+
+  --text-main: #E6F1ED;
+  --text-muted: #9FBFB5;
+
+  --radius: 16px;
+  --radius-pill: 999px;
+
+  --transition-fast: 150ms ease;
+}
+
+/* =========================
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:
+    radial-gradient(600px at 50% 0%, rgba(14, 59, 46, 0.25), transparent 60%),
+    var(--bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  position: relative;
+}
+
+/* =========================
+   DARK NOISE OVERLAY
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("../assets/textures/noise.png");
+  background-repeat: repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+  max-width: 56ch;
+  color: var(--text-muted);
+}
+
+span {
+  color: var(--accent);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+main {
+  display: block;
+}
+
+.container {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 48px 20px;
+}
+
+section {
+  margin-top: 72px;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  padding-top: 96px;
+}
+
+.hero p {
+  margin-top: 16px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: #06261c;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   SECTION INTRO
+========================= */
+.section-intro {
+  max-width: 60ch;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+/* =========================
+   GRID
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(16, 197, 139, 0.35),
+    0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+/* =========================
+   SKILLSET
+========================= */
+.skillset {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.skillset li {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-muted);
+  color: var(--accent);
+  background: rgba(16, 197, 139, 0.06);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.skillset li:hover {
+  background: rgba(16, 197, 139, 0.15);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (min-width: 640px) {
+  .container {
+    padding: 64px 28px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  section {
+    margin-top: 96px;
+  }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+@media (min-width: 1024px) {
+  .container {
+    padding: 80px 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  section {
+    margin-top: 120px;
+  }
+}
